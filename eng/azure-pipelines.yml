@@ -116,7 +116,7 @@ stages:
       ############ tvOS BUILD ############
       - job: Build_tvOS
         displayName: tvOS
-        timeoutInMinutes: 30
+        timeoutInMinutes: 45
         pool:
           vmImage: macOS-10.15
         steps:
