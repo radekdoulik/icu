@@ -38,6 +38,7 @@
 
   <!-- Browser -->
   <ItemGroup Condition="'$(AddAllTargetOSToPackage)' == 'true' or '$(PackageRID)' == 'browser-wasm'">
+    <File Include="$(RepoRoot)\eng\patches\emscripten-version.txt" TargetPath="runtimes\browser-wasm\%(Filename)%(Extension)" SkipPackageFileCheck="true" />
     <File Include="$(RepoRoot)\artifacts\bin\icu-browser-wasm\lib\libicui18n.a" TargetPath="runtimes\browser-wasm\native\lib\%(Filename)%(Extension)" SkipPackageFileCheck="true" />
     <File Include="$(RepoRoot)\artifacts\bin\icu-browser-wasm\lib\libicuuc.a" TargetPath="runtimes\browser-wasm\native\lib\%(Filename)%(Extension)" SkipPackageFileCheck="true" />
     <File Include="$(RepoRoot)\artifacts\bin\icu-browser-wasm\include\**" TargetPath="runtimes\browser-wasm\native\include\%(RecursiveDir)%(Filename)%(Extension)" SkipPackageFileCheck="true" />
