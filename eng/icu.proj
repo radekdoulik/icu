@@ -30,17 +30,12 @@
           DestinationFolder="$(EMSDK_PATH)\upstream\emscripten" />
   </Target>
   <Target Name="CopyEmscriptenVersion" Condition="'$(TargetOS)' == 'Browser'">
-    <PropertyGroup>
-      <EmscriptenVersionFile>$(RepoRoot)\artifacts\bin\icu-browser-wasm\emscripten-version.txt</EmscriptenVersionFile>
-    </PropertyGroup>
-    <Copy SourceFiles="$(EMSDK_PATH)\upstream\emscripten\emscripten-version.txt"
-          DestinationFiles="$(EmscriptenVersionFile)" />
-    <ReadLinesFromFile File="$(EmscriptenVersionFile)" >
+    <ReadLinesFromFile File="$(EMSDK_PATH)\upstream\emscripten\emscripten-version.txt" >
       <Output TaskParameter="Lines"
               ItemName="_ItemsFromEmscriptenVersionFile"/>
     </ReadLinesFromFile>
     <WriteLinesToFile
-            File="$(EmscriptenVersionFile)"
+            File="$(RepoRoot)\artifacts\bin\icu-browser-wasm\emscripten-version.txt"
             Lines="@(_ItemsFromEmscriptenVersionFile->Replace('&quot;', ''))"
             Overwrite="true" />
   </Target>
