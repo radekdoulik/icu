@@ -30,11 +30,18 @@
           DestinationFolder="$(EMSDK_PATH)\upstream\emscripten" />
   </Target>
   <Target Name="CopyEmscriptenVersion" Condition="'$(TargetOS)' == 'Browser'">
+    <PropertyGroup>
+      <EmscriptenVersionFile>$(RepoRoot)\artifacts\bin\icu-browser-wasm\emscripten-version.txt</EmscriptenVersionFile>
+    </PropertyGroup>
     <Copy SourceFiles="$(EMSDK_PATH)\upstream\emscripten\emscripten-version.txt"
-          DestinationFolder="$(RepoRoot)\artifacts\bin\icu-browser-wasm" />
-    <Exec WorkingDirectory="$(RepoRoot)\artifacts\bin\icu-browser-wasm"
-          Condition="!$([MSBuild]::IsOSPlatform('WINDOWS'))"
-          Command="sed -i 's/&quot;//g' emscripten-version.txt"
-          IgnoreStandardErrorWarningFormat="true" />
+          DestinationFiles="$(EmscriptenVersionFile)" />
+    <ReadLinesFromFile File="$(EmscriptenVersionFile)" >
+      <Output TaskParameter="Lines"
+              ItemName="_ItemsFromEmscriptenVersionFile"/>
+    </ReadLinesFromFile>
+    <WriteLinesToFile
+            File="$(EmscriptenVersionFile)"
+            Lines="@(_ItemsFromEmscriptenVersionFile->Replace('&quot;', ''))"
+            Overwrite="true" />
   </Target>
 </Project>
