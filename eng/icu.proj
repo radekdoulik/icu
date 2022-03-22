@@ -1,5 +1,5 @@
 <Project>
-  <Target Name="Build" Condition="'$(PackOnly)' != 'true'" DependsOnTargets="PatchEmscripten">
+  <Target Name="Build" Condition="'$(PackOnly)' != 'true'" DependsOnTargets="PatchEmscripten;CopyEmscriptenVersion">
     <Error Condition="'$(TargetOS)' == ''" Text="TargetOS needs to be specified!" />
     <Error Condition="'$(TargetArchitecture)' == ''" Text="TargetArchitecture needs to be specified!" />
 
@@ -28,5 +28,13 @@
           DestinationFolder="$(EMSDK_PATH)\upstream\emscripten" />
     <Copy SourceFiles="$(MSBuildThisFileDirectory)patches\emcc.py"
           DestinationFolder="$(EMSDK_PATH)\upstream\emscripten" />
+  </Target>
+  <Target Name="CopyEmscriptenVersion" Condition="'$(TargetOS)' == 'Browser'">
+    <Copy SourceFiles="$(EMSDK_PATH)\upstream\emscripten\emscripten-version.txt"
+          DestinationFolder="$(RepoRoot)\artifacts\bin\icu-browser-wasm" />
+    <Exec WorkingDirectory="$(RepoRoot)\artifacts\bin\icu-browser-wasm"
+          Condition="!$([MSBuild]::IsOSPlatform('WINDOWS'))"
+          Command="sed -i 's/&quot;//g' emscripten-version.txt"
+          IgnoreStandardErrorWarningFormat="true" />
   </Target>
 </Project>
