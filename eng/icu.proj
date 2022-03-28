@@ -1,5 +1,5 @@
 <Project>
-  <Target Name="Build" Condition="'$(PackOnly)' != 'true'" DependsOnTargets="PatchEmscripten;CopyEmscriptenVersion">
+  <Target Name="Build" Condition="'$(PackOnly)' != 'true'" DependsOnTargets="PatchEmscripten">
     <Error Condition="'$(TargetOS)' == ''" Text="TargetOS needs to be specified!" />
     <Error Condition="'$(TargetArchitecture)' == ''" Text="TargetArchitecture needs to be specified!" />
 
@@ -28,15 +28,5 @@
           DestinationFolder="$(EMSDK_PATH)\upstream\emscripten" />
     <Copy SourceFiles="$(MSBuildThisFileDirectory)patches\emcc.py"
           DestinationFolder="$(EMSDK_PATH)\upstream\emscripten" />
-  </Target>
-  <Target Name="CopyEmscriptenVersion" Condition="'$(TargetOS)' == 'Browser'">
-    <ReadLinesFromFile File="$(EMSDK_PATH)\upstream\emscripten\emscripten-version.txt" >
-      <Output TaskParameter="Lines"
-              ItemName="_ItemsFromEmscriptenVersionFile"/>
-    </ReadLinesFromFile>
-    <WriteLinesToFile
-            File="$(RepoRoot)\artifacts\bin\icu-browser-wasm\emscripten-version.txt"
-            Lines="@(_ItemsFromEmscriptenVersionFile->Replace('&quot;', ''))"
-            Overwrite="true" />
   </Target>
 </Project>
