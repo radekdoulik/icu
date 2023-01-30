@@ -65,7 +65,7 @@ stages:
             demands: ImageOverride -equals Build.Ubuntu.1804.Amd64
         container:
           # when updating, change emscripten version here: ../.devcontainer/emscripten-version.txt
-          image: mcr.microsoft.com/dotnet-buildtools/prereqs:ubuntu-18.04-webassembly-20220531132048-00a561c
+          image: mcr.microsoft.com/dotnet-buildtools/prereqs:ubuntu-18.04-webassembly3130-20230129084957-f7eb839
         steps:
         - bash: |
             ./build.sh --ci --restore --build --configuration $(_BuildConfig) /p:TargetOS=Browser /p:TargetArchitecture=wasm /p:WasmEnableThreads=true $(_InternalBuildArgs)
