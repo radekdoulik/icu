@@ -6,10 +6,10 @@
     <PreReleaseVersionIteration>5</PreReleaseVersionIteration>
   </PropertyGroup>
   <PropertyGroup>
-    <MicrosoftNETRuntimeEmscripten3134Nodelinuxx64Version>9.0.0-alpha.1.23471.2</MicrosoftNETRuntimeEmscripten3134Nodelinuxx64Version>
-    <MicrosoftNETRuntimeEmscripten3134Sdklinuxx64Version>9.0.0-alpha.1.23471.2</MicrosoftNETRuntimeEmscripten3134Sdklinuxx64Version>
-    <MicrosoftNETRuntimeEmscripten3134Cachelinuxx64Version>9.0.0-alpha.1.23471.2</MicrosoftNETRuntimeEmscripten3134Cachelinuxx64Version>
-    <MicrosoftDotNetBuildTasksPackagingVersion>9.0.0-beta.24229.1</MicrosoftDotNetBuildTasksPackagingVersion>
+    <MicrosoftNETRuntimeEmscripten3156Nodelinuxx64Version>9.0.0-preview.4.24225.1</MicrosoftNETRuntimeEmscripten3156Nodelinuxx64Version>
+    <MicrosoftNETRuntimeEmscripten3156Sdklinuxx64Version>9.0.0-preview.4.24225.1</MicrosoftNETRuntimeEmscripten3156Sdklinuxx64Version>
+    <MicrosoftNETRuntimeEmscripten3156Cachelinuxx64Version>9.0.0-preview.4.24225.1</MicrosoftNETRuntimeEmscripten3156Cachelinuxx64Version>
+    <MicrosoftDotNetBuildTasksPackagingVersion>9.0.0-beta.24226.3</MicrosoftDotNetBuildTasksPackagingVersion>
   </PropertyGroup>
   <PropertyGroup>
     <WasiSdkVersion>16</WasiSdkVersion>
